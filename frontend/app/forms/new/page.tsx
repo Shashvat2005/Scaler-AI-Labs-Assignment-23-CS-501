@@ -23,14 +23,27 @@ export default function New() {
 
   return (
     <Shell>
-      <main className="new">
-        <p className="eyebrow">NEW FORM</p>
-        <h1>Start with an idea.</h1>
+      <main className="new-form page">
+        <p className="page-eyebrow">New form</p>
+        <h1 className="new-form-title">Start with an idea.</h1>
+        <p className="new-form-subtitle">Give your form a name and start building.</p>
         <form onSubmit={go}>
-          <label>What's this form called?</label>
-          <input autoFocus value={title} onChange={(e) => setTitle(e.target.value)} />
-          <button className="button" disabled={!title.trim() || busy}>
-            {busy ? 'Creating...' : 'Create form \u2192'}
+          <div className="new-form-field">
+            <label className="label" htmlFor="form-title">
+              What's this form called?
+            </label>
+            <input
+              id="form-title"
+              className="new-form-input"
+              autoFocus
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="e.g. Customer Feedback"
+              disabled={busy}
+            />
+          </div>
+          <button className="btn btn-primary btn-lg new-form-submit" type="submit" disabled={!title.trim() || busy}>
+            {busy ? 'Creating…' : 'Create form'}
           </button>
         </form>
       </main>

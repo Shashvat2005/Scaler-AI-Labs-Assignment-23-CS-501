@@ -7,21 +7,23 @@ export function Shell({ children }: { children: React.ReactNode }) {
   const p = usePathname()
   return (
     <>
-      <header>
-        <Link href="/" className="brand">
+      <header className="header" role="banner">
+        <Link href="/" className="header-brand" aria-label="Typeflow home">
           typeflow<span>.</span>
         </Link>
-        <nav>
-          <Link className={p === '/' ? 'active' : ''} href="/">
+        <nav className="header-nav" aria-label="Main navigation">
+          <Link className={`header-nav-item ${p === '/' ? 'active' : ''}`} href="/">
             My forms
           </Link>
-          <a href="https://www.typeform.com" target="_blank">
-            Inspiration &#8599;
+          <a className="header-nav-item" href="https://www.typeform.com" target="_blank" rel="noopener noreferrer">
+            Inspiration
           </a>
         </nav>
-        <div className="avatar">SG</div>
+        <div className="header-actions">
+          <div className="header-avatar">SG</div>
+        </div>
       </header>
-      {children}
+      <main>{children}</main>
     </>
   )
 }
