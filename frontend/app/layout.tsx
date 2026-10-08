@@ -1,5 +1,8 @@
+import React from 'react'
 import './styles.css'
 import type { Metadata } from 'next'
+import { ToastProvider } from '../lib/toast'
+import { Shell } from '../components/Shell'
 
 export const metadata: Metadata = {
   title: 'Typeflow',
@@ -9,7 +12,11 @@ export const metadata: Metadata = {
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <ToastProvider>
+          <Shell>{children}</Shell>
+        </ToastProvider>
+      </body>
     </html>
   )
 }

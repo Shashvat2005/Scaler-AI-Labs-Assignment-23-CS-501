@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { api } from '../../../../lib/api'
 import { Form } from '../../../../lib/types'
-import { Shell } from '../../../../components/Shell'
 import { ShareControls } from '../../../../components/ShareControls'
 
 type Stats = {
@@ -33,17 +32,15 @@ export default function Results() {
 
   if (!form || !stats)
     return (
-      <Shell>
-        <div className="page" style={{ minHeight: '60vh' }}>
-          <div className="empty-state">
-            <svg className="empty-state-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <circle cx="12" cy="12" r="10" />
-              <path d="M12 6v6l4 2" />
-            </svg>
-            <p className="empty-state-title">Loading responses…</p>
-          </div>
+      <div className="page" style={{ minHeight: '60vh' }}>
+        <div className="empty-state">
+          <svg className="empty-state-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 6v6l4 2" />
+          </svg>
+          <p className="empty-state-title">Loading responses…</p>
         </div>
-      </Shell>
+      </div>
     )
 
   const exportCsv = () => {
@@ -74,8 +71,7 @@ export default function Results() {
   }
 
   return (
-    <Shell>
-      <main className="responses-page page">
+    <main className="responses-page page">
         <header className="responses-header">
           <div>
             <Link href={`/forms/${id}/builder`} className="btn btn-ghost btn-sm" style={{ marginBottom: '16px' }}>
@@ -185,6 +181,5 @@ export default function Results() {
           )}
         </section>
       </main>
-    </Shell>
   )
 }

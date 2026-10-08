@@ -562,6 +562,205 @@ button {
   font-weight: 700;
   display: grid;
   place-items: center;
+  position: relative;
+  cursor: default;
+}
+
+.header-avatar:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 10px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--surface);
+  background: var(--text);
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  opacity: 0;
+  animation: tooltipIn var(--transition-fast) ease-out forwards;
+  z-index: 100;
+}
+
+.header-avatar:hover::before {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: var(--text);
+  opacity: 0;
+  animation: tooltipIn var(--transition-fast) ease-out forwards;
+  z-index: 100;
+}
+
+@keyframes tooltipIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(4px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* ============================================
+   AVATAR MENU
+   ============================================ */
+
+.header-avatar-wrapper {
+  position: relative;
+}
+
+.header-avatar {
+  cursor: pointer;
+  transition: background var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.header-avatar:hover {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 0 0 3px var(--accent-light);
+}
+
+.header-avatar:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.avatar-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  min-width: 280px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 0;
+  z-index: 200;
+  animation: dropdownIn var(--transition-normal) ease-out;
+  overflow: hidden;
+}
+
+.avatar-menu-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.avatar-menu-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--accent-light);
+  color: var(--accent);
+  font-size: 16px;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.avatar-menu-info {
+  min-width: 0;
+}
+
+.avatar-menu-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.avatar-menu-email {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.avatar-menu-section {
+  padding: 8px 12px;
+}
+
+.avatar-menu-section-title {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  margin: 0 0 6px;
+  padding: 0 4px;
+}
+
+.avatar-menu-items {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.avatar-menu-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  text-align: left;
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.avatar-menu-item:hover {
+  background: var(--surface-subtle);
+}
+
+.avatar-menu-item:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.avatar-menu-item-danger {
+  color: var(--danger);
+}
+
+.avatar-menu-item-danger:hover {
+  background: var(--danger-light);
+  color: var(--danger);
+}
+
+.avatar-menu-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 4px 8px;
+}
+
+/* Toast container positioning */
+.toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.toast-container .notice {
+  pointer-events: auto;
 }
 
 /* ============================================

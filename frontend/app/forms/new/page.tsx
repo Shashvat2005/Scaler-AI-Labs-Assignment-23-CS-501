@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { api } from '../../../lib/api'
-import { Shell } from '../../../components/Shell'
 
 export default function New() {
   const [title, setTitle] = useState('Untitled form')
@@ -22,8 +21,7 @@ export default function New() {
   }
 
   return (
-    <Shell>
-      <main className="new-form page">
+    <main className="new-form page">
         <p className="page-eyebrow">New form</p>
         <h1 className="new-form-title">Start with an idea.</h1>
         <p className="new-form-subtitle">Give your form a name and start building.</p>
@@ -47,6 +45,5 @@ export default function New() {
           </button>
         </form>
       </main>
-    </Shell>
   )
 }
