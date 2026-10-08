@@ -1,6 +1,9 @@
 from .database import Base, engine, SessionLocal
 from .models import Form, Question, Response, Answer
 import json
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 def seed():

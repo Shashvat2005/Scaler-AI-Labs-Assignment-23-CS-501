@@ -1,9 +1,13 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import DeclarativeBase, sessionmaker
 
+from .config import get_settings
+
+
+settings = get_settings()
 
 engine = create_engine(
-    "sqlite:///./typeflow.db", connect_args={"check_same_thread": False}
+    settings.DATABASE_URL, connect_args={"check_same_thread": False}
 )
 SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)
 

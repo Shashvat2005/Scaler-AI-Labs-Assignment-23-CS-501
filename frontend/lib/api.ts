@@ -1,9 +1,8 @@
 import { Form, Question, QType } from './types'
-
-const API = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api'
+import { config } from './config'
 
 async function call<T>(path: string, opts?: RequestInit): Promise<T> {
-  const r = await fetch(`${API}${path}`, {
+  const r = await fetch(`${config.apiUrl}${path}`, {
     headers: { 'Content-Type': 'application/json' },
     ...opts,
   })
